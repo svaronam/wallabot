@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generado por tools/icons.py: no editar a mano -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#FFFFFFFF" android:pathData="M11,3 L13,9.4 L19.5,11.5 L13,13.6 L11,20 L9,13.6 L2.5,11.5 L9,9.4 Z" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M18.5,1.8 L19.35,4.15 L21.7,5 L19.35,5.85 L18.5,8.2 L17.65,5.85 L15.3,5 L17.65,4.15 Z" />
+</vector>

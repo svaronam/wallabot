@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:Theme.Material">
+        <item name="android:colorPrimary">#1B1F1D</item>
+        <item name="android:colorPrimaryDark">#121513</item>
+        <item name="android:colorAccent">#2BB38F</item>
+        <item name="android:windowBackground">#121513</item>
+		<item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+</resources>

@@ -1,0 +1,17 @@
+[Unit]
+Description=Wallabot - rastreador de Wallapop
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=__USER__
+WorkingDirectory=__DIR__/server
+EnvironmentFile=__DIR__/server/.env
+ExecStart=__DIR__/server/.venv/bin/python -m wallabot
+Restart=always
+RestartSec=10
+MemoryMax=300M
+Nice=5
+
+[Install]
+WantedBy=multi-user.target

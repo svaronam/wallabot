@@ -1,0 +1,47 @@
+# Compila la APK en GitHub cada vez que cambia algo en android/ (o a mano desde la pestaña Actions).
+# La APK queda en la ejecución como "Artifact" y, si subes una etiqueta v1.0.0, también como Release.
+name: APK
+
+on:
+  push:
+    branches: ["main"]
+    paths: ["android/**", ".github/workflows/apk.yml"]
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar la clave de firma (GitHub Secrets)
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$KEYSTORE_BASE64" ]; then echo "::error::Falta el secreto KEYSTORE_BASE64. Ver INSTALACION.md"; exit 1; fi
+          mkdir -p "$(dirname "$GITHUB_WORKSPACE/android/keystore/wallabot.jks")"
+          echo "$KEYSTORE_BASE64" | base64 -d > "$GITHUB_WORKSPACE/android/keystore/wallabot.jks"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Compilar
+        working-directory: android
+        run: ./gradlew --no-daemon assembleRelease
+      - name: Renombrar
+        run: cp android/app/build/outputs/apk/release/app-release.apk wallabot.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wallabot-apk
+          path: wallabot.apk
+      - name: Publicar release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: wallabot.apk
