@@ -10,6 +10,21 @@ Rastreador de **Wallapop** 24/7 con avisos en tiempo real y **análisis de merca
 - **Resumen diario** por búsqueda y alertas de estado (bloqueos, búsquedas sin resultados, servidor caído).
 - **Avisos por canales**: cada tipo de aviso tiene su canal de Android para personalizar sonido y prioridad.
 
+## Capturas
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/capturas/avisos.png" width="260" alt="Avisos: chollos detectados con el descuento frente a la mediana de la búsqueda"></td>
+    <td align="center"><img src="docs/capturas/analisis.png" width="260" alt="Análisis de mercado: ventas, tiempo hasta vender, conclusiones y gráficos cruzados"></td>
+    <td align="center"><img src="docs/capturas/busquedas.png" width="260" alt="Búsquedas con avisos, con rango de precio y frecuencia de revisión"></td>
+  </tr>
+  <tr>
+    <td align="center">Chollos</td>
+    <td align="center">Análisis de mercado</td>
+    <td align="center">Búsquedas</td>
+  </tr>
+</table>
+
 ## Arquitectura
 
 ```
